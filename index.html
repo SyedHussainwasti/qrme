@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Makes the page fit phone screens nicely -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Studio — make QR codes in your browser</title>
+<!-- Short description for search engines and link previews -->
+<meta name="description" content="Generate QR codes for text and URLs. Download as PNG. Everything runs locally.">
+<!-- All the styling lives in styles.css -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- The narrow column holding the whole tool -->
+<div class="wrap">
+  <!-- Title area -->
+  <header>
+    <h1><span>◈</span> QR Studio</h1>
+    <p>Type text or a URL, get a QR code. Download it as PNG — all offline.</p>
+  </header>
+
+  <!-- The main card: text box, controls, preview, download -->
+  <div class="card">
+    <!-- The text/URL input -->
+    <label for="qrtext">Text or URL</label>
+    <textarea id="qrtext" placeholder="https://example.com — or any text…"></textarea>
+
+    <!-- Size picker and Dark/Light style switch -->
+    <div class="controls">
+      <div class="ctl">
+        <label for="qrsize">Size</label>
+        <select id="qrsize">
+          <option value="256">256 px</option>
+          <option value="512" selected>512 px</option>
+          <option value="1024">1024 px</option>
+        </select>
+      </div>
+      <div class="ctl">
+        <label>Style</label>
+        <div class="seg" id="qrstyle">
+          <button data-style="dark" class="active">Dark</button>
+          <button data-style="light">Light</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The framed preview area: hint text first, QR canvas once drawn -->
+    <div class="preview" id="preview">
+      <div class="placeholder" id="placeholder">Your QR code appears here.<br>Type something above to begin.</div>
+      <canvas id="qrcanvas" style="display:none"></canvas>
+    </div>
+
+    <!-- Download button + small message line -->
+    <button class="btn" id="dlbtn" disabled>Download PNG</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <!-- Small print at the bottom -->
+  <footer>Error correction level M · quiet zone included.<br>Rendering is done on a canvas — the PNG is pixel-perfect at the chosen size.</footer>
+</div>
+<!-- All the code (QR library + app) lives in app.js -->
+<script src="app.js"></script>
+</body>
+</html>
